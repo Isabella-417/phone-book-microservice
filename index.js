@@ -49,7 +49,7 @@ app.post("/api/persons", (req, res) => {
   person.id = utils.generateId(100, 1);
   const errors = utils.validateParams(person, people);
   if (errors.errors.length !== 0) {
-    return res.json(errors);
+    return res.status(400).json(errors);
   }
   people = people.concat(person);
   res.json(people);
